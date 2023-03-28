@@ -1,0 +1,62 @@
+
+  <main>
+    <div class="search-container my-4">
+      <input [(ngModel)]="searchQuery" class="form-control" placeholder="Search">
+      <button class="btn btn-primary mt-2" (click)="search()">Search</button>
+      <select [(ngModel)]="resultsPerPage" class="form-select mx-2" aria-label="Results per page" (change)="search()">
+        <option [ngValue]="5">5</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="15">15</option>
+        <option [ngValue]="25">25</option>
+      </select>
+
+    </div>
+
+    <div *ngIf="orders">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+
+            <th>Nickname</th>
+            <th>Total</th>
+            <th>Paid in Full</th>
+            <th>Invoice #</th>
+            <th>PO Number</th>
+            <th>Workorder URL</th>
+            <th>Printavo URL</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+
+            <td>{{order.nickname}}</td>
+            <td>{{order.total}}</td>
+            <td>{{order.paidInFull}}</td>
+            <td>{{order.visualId}}</td>
+            <td>{{order.visualPoNumber}}</td>
+            <td>
+              <a [href]="order.workorderUrl" target="_blank">
+                <button class="btn btn-primary">Click</button>
+              </a>
+            </td>
+            <td>
+              <a [href]="order.url" target="_blank">
+                <button class="btn btn-primary">Click</button>
+              </a>
+            </td>
+            <td>{{order.status.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="align-right">
+        <button class="btn btn-primary mt-2" (click)="nextPage()"
+          [disabled]="!pageInfo.hasNextPage || loading">Next</button>
+
+        <p>Showing {{ totalCount }}  results</p>
+
+      </div>
+
+    </div>
+  </main>
+
