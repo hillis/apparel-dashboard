@@ -1,0 +1,8536 @@
+"""
+Requires that exactly one field must be supplied and that field must not be `null`.
+"""
+directive @oneOf on INPUT_OBJECT
+
+"""
+Account
+"""
+type Account implements IDed & Timestamps {
+  """
+  Address
+  """
+  address: Address
+
+  """
+  Approvals
+  """
+  approvals(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ApprovalConnection!
+
+  """
+  What catalogs is the Account using?
+  """
+  catalogInformation: CatalogInformation!
+
+  """
+  Categories of line items
+  """
+  categories(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): CategoryConnection!
+
+  """
+  Company email
+  """
+  companyEmail: String!
+
+  """
+  Company name
+  """
+  companyName: String
+
+  """
+  Delivery methods
+  """
+  deliveryMethods(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): DeliveryMethodConnection!
+
+  """
+  Email templates
+  """
+  emailTemplates(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): EmailTemplateConnection!
+
+  """
+  Default columns enabled for line item groups
+  """
+  enabledLineItemGroupColumns: LineItemEnabledColumns!
+
+  """
+  Features
+  """
+  features: [Feature!]!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Information about invoices
+  """
+  invoiceInformation: InvoiceInformation!
+
+  """
+  List of all line item sizes
+  """
+  lineItemGroupSizes: [LineItemGroupSize!]!
+
+  """
+  Locale
+  """
+  locale: String!
+
+  """
+  Order statuses
+  """
+  orderStatuses(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+
+    """
+    The ID of an order status to find
+    """
+    id: ID
+
+    """
+    The type of status or statuses to be queried
+    """
+    type: StatusType
+  ): StatusConnection!
+
+  """
+  Does the Account have a payment processor set up?
+  """
+  paymentProcessorPresent: Boolean!
+
+  """
+  Payment terms
+  """
+  paymentTerms(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): PaymentTermConnection!
+
+  """
+  Phone number
+  """
+  phone: String
+
+  """
+  List of preset task groups
+  """
+  presetTaskGroups(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): PresetTaskGroupConnection!
+
+  """
+  Price matrices
+  """
+  pricingMatrices(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): PricingMatrixConnection!
+
+  """
+  Social Links
+  """
+  social: Social!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Types of work
+  """
+  typesOfWork(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): TypeOfWorkConnection!
+
+  """
+  Website
+  """
+  website: String
+}
+
+"""
+Address
+"""
+type Address implements MailAddress & Timestamps {
+  """
+  Address line 1
+  """
+  address1: String
+
+  """
+  Address line 2
+  """
+  address2: String
+
+  """
+  City
+  """
+  city: String
+
+  """
+  Country
+  """
+  country: String
+
+  """
+  Country ISO
+  """
+  countryIso: String
+
+  """
+  State
+  """
+  state: String
+
+  """
+  State ISO
+  """
+  stateIso: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Zip code
+  """
+  zipCode: String
+}
+
+"""
+Input for an address
+"""
+input AddressInput {
+  """
+  Address line 1
+  """
+  address1: String
+
+  """
+  Address line 2
+  """
+  address2: String
+
+  """
+  City
+  """
+  city: String
+
+  """
+  Country ISO
+  """
+  countryIso: String
+
+  """
+  State ISO
+  """
+  stateIso: String
+
+  """
+  Zip code
+  """
+  zipCode: String
+}
+
+"""
+Approval
+"""
+type Approval implements IDed & Timestamps {
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name of the approval
+  """
+  name: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for Approval.
+"""
+type ApprovalConnection {
+  """
+  A list of edges.
+  """
+  edges: [ApprovalEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Approval!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type ApprovalEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Approval!
+}
+
+"""
+Approval request
+"""
+type ApprovalRequest implements IDed & Timestamps {
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Approval name
+  """
+  name: String!
+
+  """
+  User that issued the request
+  """
+  requester: User!
+
+  """
+  Response (approve/decline) details
+  """
+  response: ApprovalRequestResponse
+
+  """
+  User that retracted the request
+  """
+  retractor: User
+
+  """
+  Status of approval request
+  """
+  status: ApprovalRequestStatus!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for ApprovalRequest.
+"""
+type ApprovalRequestConnection {
+  """
+  A list of edges.
+  """
+  edges: [ApprovalRequestEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [ApprovalRequest!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating an approval request
+"""
+input ApprovalRequestCreateInput {
+  """
+  User that issued the request
+  """
+  requester: IDInput
+
+  """
+  The ID of the Approval type to request
+  """
+  id: ID!
+}
+
+"""
+An edge in a connection.
+"""
+type ApprovalRequestEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: ApprovalRequest!
+}
+
+"""
+Approval request response details
+"""
+type ApprovalRequestResponse {
+  """
+  Email address of decliner
+  """
+  email: String
+
+  """
+  Name of approver/decliner
+  """
+  name: String!
+
+  """
+  Reason for decline
+  """
+  reason: String
+
+  """
+  When was the request approved/declined
+  """
+  respondedAt: ISO8601DateTime!
+}
+
+"""
+Status of an approval request
+"""
+enum ApprovalRequestStatus {
+  """
+  Approval request has been approved
+  """
+  approved
+
+  """
+  Approval request has been declined
+  """
+  declined
+
+  """
+  Approval request is pending
+  """
+  pending
+
+  """
+  Approval request has been revoked
+  """
+  revoked
+
+  """
+  Approval request has been unapproved
+  """
+  unapproved
+}
+
+"""
+User Avatar
+"""
+type Avatar {
+  """
+  Avatar background color
+  """
+  backgroundColor: String
+
+  """
+  Avatar initials
+  """
+  initials: String
+
+  """
+  Avatar URL (small)
+  """
+  urlSmall: String
+}
+
+"""
+Account catalog information
+"""
+type CatalogInformation {
+  """
+  Use Alpha-Broder global products?
+  """
+  alphabroder: Boolean!
+
+  """
+  Use San-Mar global products?
+  """
+  sanmar: Boolean!
+
+  """
+  Use S&S Activewear global products?
+  """
+  ssActivewear: Boolean!
+}
+
+"""
+Category
+"""
+type Category implements IDed & Timestamps {
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for Category.
+"""
+type CategoryConnection {
+  """
+  A list of edges.
+  """
+  edges: [CategoryEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Category!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type CategoryEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Category!
+}
+
+"""
+Customer contact
+"""
+type Contact implements IDed & Timestamps {
+  """
+  This contact's customer
+  """
+  customer: Customer!
+
+  """
+  Email
+  """
+  email: String
+
+  """
+  Fax
+  """
+  fax: String
+
+  """
+  First name
+  """
+  firstName: String
+
+  """
+  Full name
+  """
+  fullName: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Last name
+  """
+  lastName: String
+
+  """
+  Order count
+  """
+  orderCount: Int
+
+  """
+  All quotes and invoices assigned to this contact
+  """
+  orders(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): OrderUnionConnection!
+
+  """
+  Phone
+  """
+  phone: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for Contact.
+"""
+type ContactConnection {
+  """
+  A list of edges.
+  """
+  edges: [ContactEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Contact!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type ContactEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Contact!
+}
+
+"""
+Input for a contact
+"""
+input ContactInput {
+  """
+  Fax
+  """
+  fax: String
+
+  """
+  First name
+  """
+  firstName: String
+
+  """
+  Last name
+  """
+  lastName: String
+
+  """
+  Phone
+  """
+  phone: String
+
+  """
+  Emails
+  """
+  email: [String!]
+}
+
+"""
+Contractor
+"""
+type ContractorProfile implements IDed & Timestamps {
+  """
+  Address
+  """
+  address: Address
+
+  """
+  Company name
+  """
+  companyName: String!
+
+  """
+  Email
+  """
+  email: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Logo
+  """
+  logo: String
+
+  """
+  Phone
+  """
+  phone: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Website
+  """
+  website: String
+}
+
+"""
+Order address
+"""
+type CustomAddress implements IDed & MailAddress & Timestamps {
+  """
+  Address line 1
+  """
+  address1: String
+
+  """
+  Address line 2
+  """
+  address2: String
+
+  """
+  City
+  """
+  city: String
+
+  """
+  Company Name
+  """
+  companyName: String
+
+  """
+  Country
+  """
+  country: String
+
+  """
+  Country ISO
+  """
+  countryIso: String
+
+  """
+  Customer Name
+  """
+  customerName: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Address Name
+  """
+  name: String
+
+  """
+  State
+  """
+  state: String
+
+  """
+  State ISO
+  """
+  stateIso: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Zip code
+  """
+  zipCode: String
+}
+
+"""
+The connection type for CustomAddress.
+"""
+type CustomAddressConnection {
+  """
+  A list of edges.
+  """
+  edges: [CustomAddressEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [CustomAddress!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a custom address
+"""
+input CustomAddressCreatesInput {
+  """
+  ID of quote or invoice to add this address to
+  """
+  parentId: ID!
+
+  """
+  Create address values
+  """
+  input: CustomAddressInput!
+}
+
+"""
+An edge in a connection.
+"""
+type CustomAddressEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: CustomAddress!
+}
+
+"""
+Input for an address
+"""
+input CustomAddressInput {
+  """
+  Company Name
+  """
+  companyName: String
+
+  """
+  Customer Name
+  """
+  customerName: String
+
+  """
+  Address line 1
+  """
+  address1: String
+
+  """
+  Address line 2
+  """
+  address2: String
+
+  """
+  City
+  """
+  city: String
+
+  """
+  Country ISO
+  """
+  countryIso: String
+
+  """
+  State ISO
+  """
+  stateIso: String
+
+  """
+  Zip code
+  """
+  zipCode: String
+
+  """
+  Address Name
+  """
+  name: String
+}
+
+"""
+Input for updating an address
+"""
+input CustomAddressUpdatesInput {
+  """
+  ID of address to update
+  """
+  id: ID!
+
+  """
+  Update address values
+  """
+  input: CustomAddressInput!
+}
+
+"""
+Customer
+"""
+type Customer implements IDed & Timestamps {
+  """
+  Billing address
+  """
+  billingAddress: Address
+
+  """
+  Company name
+  """
+  companyName: String
+
+  """
+  Contacts
+  """
+  contacts(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ContactConnection!
+
+  """
+  Default payment term
+  """
+  defaultPaymentTerm: PaymentTerm
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Internal note
+  """
+  internalNote: String
+
+  """
+  This customer's order count
+  """
+  orderCount: Int!
+
+  """
+  All quotes and invoices assigned to this customer
+  """
+  orders(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): OrderUnionConnection!
+
+  """
+  User who owns the customer
+  """
+  owner: User
+
+  """
+  The primary contact for this customer
+  """
+  primaryContact: Contact!
+
+  """
+  Public url for customer
+  """
+  publicUrl: String!
+
+  """
+  Reminders
+  """
+  reminders(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): TaskConnection!
+
+  """
+  Resale number
+  """
+  resaleNumber: String
+
+  """
+  Sales tax
+  """
+  salesTax: Float
+
+  """
+  Shipping address
+  """
+  shippingAddress: Address
+
+  """
+  Is the customer tax exempt?
+  """
+  taxExempt: Boolean!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+Order address
+"""
+type CustomerAddress implements MailAddress & Timestamps {
+  """
+  Address line 1
+  """
+  address1: String
+
+  """
+  Address line 2
+  """
+  address2: String
+
+  """
+  City
+  """
+  city: String
+
+  """
+  Company Name
+  """
+  companyName: String
+
+  """
+  Country
+  """
+  country: String
+
+  """
+  Country ISO
+  """
+  countryIso: String
+
+  """
+  Customer Name
+  """
+  customerName: String
+
+  """
+  State
+  """
+  state: String
+
+  """
+  State ISO
+  """
+  stateIso: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Zip code
+  """
+  zipCode: String
+}
+
+"""
+Input for an address
+"""
+input CustomerAddressInput {
+  """
+  Company Name
+  """
+  companyName: String
+
+  """
+  Customer Name
+  """
+  customerName: String
+
+  """
+  Address line 1
+  """
+  address1: String
+
+  """
+  Address line 2
+  """
+  address2: String
+
+  """
+  City
+  """
+  city: String
+
+  """
+  Country ISO
+  """
+  countryIso: String
+
+  """
+  State ISO
+  """
+  stateIso: String
+
+  """
+  Zip code
+  """
+  zipCode: String
+}
+
+"""
+The connection type for Customer.
+"""
+type CustomerConnection {
+  """
+  A list of edges.
+  """
+  edges: [CustomerEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Customer!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a customer
+"""
+input CustomerCreateInput {
+  """
+  Billing address
+  """
+  billingAddress: AddressInput
+
+  """
+  Company name
+  """
+  companyName: String
+
+  """
+  Default payment term
+  """
+  defaultPaymentTerm: IDInput
+
+  """
+  Internal note
+  """
+  internalNote: String
+
+  """
+  User who owns the customer
+  """
+  owner: IDInput
+
+  """
+  Resale number
+  """
+  resaleNumber: String
+
+  """
+  Sales tax
+  """
+  salesTax: Float
+
+  """
+  Shipping address
+  """
+  shippingAddress: AddressInput
+
+  """
+  Is the customer tax exempt?
+  """
+  taxExempt: Boolean
+
+  """
+  The primary contact for this customer
+  """
+  primaryContact: ContactInput!
+
+  """
+  List of non-primary contacts to create
+  """
+  contacts: [ContactInput!]
+}
+
+"""
+An edge in a connection.
+"""
+type CustomerEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Customer!
+}
+
+"""
+Input for a customer
+"""
+input CustomerInput {
+  """
+  Billing address
+  """
+  billingAddress: AddressInput
+
+  """
+  Company name
+  """
+  companyName: String
+
+  """
+  Default payment term
+  """
+  defaultPaymentTerm: IDInput
+
+  """
+  Internal note
+  """
+  internalNote: String
+
+  """
+  User who owns the customer
+  """
+  owner: IDInput
+
+  """
+  Resale number
+  """
+  resaleNumber: String
+
+  """
+  Sales tax
+  """
+  salesTax: Float
+
+  """
+  Shipping address
+  """
+  shippingAddress: AddressInput
+
+  """
+  Is the customer tax exempt?
+  """
+  taxExempt: Boolean
+}
+
+"""
+ID of deleted object
+"""
+type DeletedID {
+  """
+  ID
+  """
+  id: ID!
+}
+
+"""
+Delivery method
+"""
+type DeliveryMethod implements IDed & Timestamps {
+  """
+  Archived?
+  """
+  archived: Boolean!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Delivery type
+  """
+  name: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for DeliveryMethod.
+"""
+type DeliveryMethodConnection {
+  """
+  A list of edges.
+  """
+  edges: [DeliveryMethodEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [DeliveryMethod!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type DeliveryMethodEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: DeliveryMethod!
+}
+
+"""
+Input for a delivery method
+"""
+input DeliveryMethodInput {
+  """
+  Delivery type
+  """
+  name: String
+}
+
+"""
+Input for email fields on a payment request
+"""
+input EmailInput {
+  """
+  To recipients
+  """
+  to: [String!]!
+
+  """
+  CC recipients
+  """
+  cc: [String!]
+
+  """
+  Email subject
+  """
+  subject: String
+
+  """
+  Email body
+  """
+  body: String!
+}
+
+"""
+Email Message
+"""
+type EmailMessage implements IDed & Message & Timestamps {
+  """
+  Attached files
+  """
+  attachments(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): MessageAttachmentConnection!
+
+  """
+  BCC
+  """
+  bcc: String
+
+  """
+  CC
+  """
+  cc: String
+
+  """
+  From
+  """
+  from: String!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Incoming message?
+  """
+  incoming: Boolean!
+
+  """
+  Who was the recipient?
+  """
+  recipient: MessageParticipantUnion
+
+  """
+  Who was the sender?
+  """
+  sender: MessageParticipantUnion
+
+  """
+  Delivery status
+  """
+  status: MessageDeliveryStatus!
+
+  """
+  Subject
+  """
+  subject: String!
+
+  """
+  Text
+  """
+  text: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  To
+  """
+  to: String!
+}
+
+"""
+Input for creating an email message
+"""
+input EmailMessageInput {
+  """
+  Subject
+  """
+  subject: String!
+
+  """
+  Text
+  """
+  text: String!
+
+  """
+  To
+  """
+  to: [String!]!
+
+  """
+  CC
+  """
+  cc: [String!]
+
+  """
+  BCC
+  """
+  bcc: [String!]
+}
+
+"""
+Email template
+"""
+type EmailTemplate implements IDed & Timestamps {
+  """
+  Body
+  """
+  body: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String
+
+  """
+  Subject
+  """
+  subject: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for EmailTemplate.
+"""
+type EmailTemplateConnection {
+  """
+  A list of edges.
+  """
+  edges: [EmailTemplateEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [EmailTemplate!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type EmailTemplateEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: EmailTemplate!
+}
+
+"""
+Expenses
+"""
+type Expense implements IDed & Timestamps {
+  """
+  Amount
+  """
+  amount: Float!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  When was the transaction
+  """
+  transactionAt: ISO8601DateTime!
+
+  """
+  User generated?
+  """
+  userGenerated: Boolean!
+}
+
+"""
+The connection type for Expense.
+"""
+type ExpenseConnection {
+  """
+  A list of edges.
+  """
+  edges: [ExpenseEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Expense!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type ExpenseEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Expense!
+}
+
+"""
+Feature
+"""
+type Feature {
+  """
+  Keyword of the feature
+  """
+  key: String!
+
+  """
+  Feature restriction details
+  """
+  restriction: FeatureRestriction
+}
+
+"""
+Feature restriction details
+"""
+type FeatureRestriction {
+  """
+  Current amount used
+  """
+  currentUsage: Int!
+
+  """
+  The maximum allowed usage
+  """
+  limit: Int!
+
+  """
+  When the usage resets
+  """
+  resetsAt: ISO8601DateTime
+}
+
+"""
+Fees
+"""
+type Fee implements IDed & Timestamps {
+  """
+  Effective fee amount
+  """
+  amount: Float
+
+  """
+  Description
+  """
+  description: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Number of fees
+  """
+  quantity: Int
+
+  """
+  Is it taxable?
+  """
+  taxable: Boolean
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Fee amount or percentage amount
+  """
+  unitPrice: Float
+
+  """
+  Is amountValue a percentage of order subtotal?
+  """
+  unitPriceAsPercentage: Boolean
+}
+
+"""
+The connection type for Fee.
+"""
+type FeeConnection {
+  """
+  A list of edges.
+  """
+  edges: [FeeEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Fee!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a fee
+"""
+input FeeCreatesInput {
+  """
+  ID of quote or invoice to add this fee to
+  """
+  parentId: ID!
+
+  """
+  Values to create fee with
+  """
+  input: FeeInput
+}
+
+"""
+An edge in a connection.
+"""
+type FeeEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Fee!
+}
+
+"""
+Input for a fee
+"""
+input FeeInput {
+  """
+  Effective fee amount
+  """
+  amount: Float
+
+  """
+  Description
+  """
+  description: String
+
+  """
+  Number of fees
+  """
+  quantity: Int
+
+  """
+  Is it taxable?
+  """
+  taxable: Boolean
+
+  """
+  Fee amount or percentage amount
+  """
+  unitPrice: Float
+
+  """
+  Is amountValue a percentage of order subtotal?
+  """
+  unitPriceAsPercentage: Boolean
+}
+
+"""
+Input for updating a fee
+"""
+input FeeUpdatesInput {
+  """
+  ID of fee to update
+  """
+  id: ID!
+
+  """
+  Update fee values
+  """
+  input: FeeInput!
+}
+
+input IDInput {
+  """
+  ID
+  """
+  id: ID
+}
+
+"""
+Has an ID
+"""
+interface IDed {
+  """
+  The ID
+  """
+  id: ID!
+}
+
+"""
+An ISO 8601-encoded date
+"""
+scalar ISO8601Date
+
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
+"""
+Imprints
+"""
+type Imprint implements IDed & Timestamps {
+  """
+  Details
+  """
+  details: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  The mockups
+  """
+  mockups(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): MockupConnection!
+
+  """
+  Pricing Column
+  """
+  pricingMatrixColumn: PricingMatrixColumn
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Type of work
+  """
+  typeOfWork: TypeOfWork
+}
+
+"""
+The connection type for Imprint.
+"""
+type ImprintConnection {
+  """
+  A list of edges.
+  """
+  edges: [ImprintEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Imprint!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating an Imprint
+"""
+input ImprintCreateInput {
+  """
+  Details
+  """
+  details: String
+
+  """
+  Pricing Column
+  """
+  pricingMatrixColumn: IDInput
+
+  """
+  Type of work
+  """
+  typeOfWork: IDInput
+
+  """
+  List of mockups to create
+  """
+  mockups: [MockupCreateInput!]
+}
+
+"""
+Input for creating an imprint
+"""
+input ImprintCreatesInput {
+  """
+  ID of line item group to create this imprint on
+  """
+  lineItemGroupId: ID!
+
+  """
+  Create imprint values
+  """
+  input: ImprintCreateInput!
+}
+
+"""
+An edge in a connection.
+"""
+type ImprintEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Imprint!
+}
+
+"""
+Imprint
+"""
+input ImprintInput {
+  """
+  Details
+  """
+  details: String
+
+  """
+  Pricing Column
+  """
+  pricingMatrixColumn: IDInput
+
+  """
+  Type of work
+  """
+  typeOfWork: IDInput
+}
+
+"""
+Input for creating a mockup
+"""
+input ImprintMockupCreatesInput {
+  """
+  ID of imprint to create this on
+  """
+  imprintId: ID!
+
+  """
+  Image URL to create imprint mockup with
+  """
+  publicImageUrl: String!
+}
+
+"""
+Input for updating an imprint
+"""
+input ImprintUpdatesInput {
+  """
+  ID of imprint to update
+  """
+  id: ID!
+
+  """
+  Update imprint values
+  """
+  input: ImprintInput!
+}
+
+"""
+Inquiry
+"""
+type Inquiry implements IDed & Timestamps {
+  """
+  Email of person making the inquiry
+  """
+  email: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name of person making the inquiry
+  """
+  name: String!
+
+  """
+  Phone number of person making the inquiry
+  """
+  phone: String
+
+  """
+  Request
+  """
+  request: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Has the inquiry been read?
+  """
+  unread: Boolean!
+}
+
+"""
+The connection type for Inquiry.
+"""
+type InquiryConnection {
+  """
+  A list of edges.
+  """
+  edges: [InquiryEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Inquiry!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating an inquiry
+"""
+input InquiryCreateInput {
+  """
+  Name of person making the inquiry
+  """
+  name: String!
+
+  """
+  Email of person making the inquiry
+  """
+  email: String
+
+  """
+  Phone number of person making the inquiry
+  """
+  phone: String
+
+  """
+  Request
+  """
+  request: String
+}
+
+"""
+An edge in a connection.
+"""
+type InquiryEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Inquiry!
+}
+
+"""
+Input for an inquiry
+"""
+input InquiryInput {
+  """
+  Is the inquiry unread
+  """
+  unread: Boolean!
+}
+
+"""
+Invoice
+"""
+type Invoice implements IDed & Timestamps & VisualIDed {
+  """
+  Amount outstanding
+  """
+  amountOutstanding: Float
+
+  """
+  Amount paid
+  """
+  amountPaid: Float
+
+  """
+  Approval requests
+  """
+  approvalRequests(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ApprovalRequestConnection!
+
+  """
+  Billing address
+  """
+  billingAddress: CustomerAddress
+
+  """
+  Customer contact
+  """
+  contact: Contact!
+
+  """
+  Contractor profile
+  """
+  contractorProfile: ContractorProfile
+
+  """
+  Created date
+  """
+  createdAt: ISO8601Date!
+
+  """
+  Custom addresses
+  """
+  customAddresses(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): CustomAddressConnection
+
+  """
+  Customer due date
+  """
+  customerDueAt: ISO8601Date!
+
+  """
+  Customer note
+  """
+  customerNote: String
+
+  """
+  Delivery method
+  """
+  deliveryMethod: DeliveryMethod
+
+  """
+  Discount
+  """
+  discount: Float
+
+  """
+  Discount Amount
+  """
+  discountAmount: Float
+
+  """
+  Discount is percentage?
+  """
+  discountAsPercentage: Boolean
+
+  """
+  Production due date
+  """
+  dueAt: ISO8601DateTime
+
+  """
+  Expenses
+  """
+  expenses(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ExpenseConnection
+
+  """
+  Fees
+  """
+  fees(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): FeeConnection!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Invoice date
+  """
+  invoiceAt: ISO8601Date!
+
+  """
+  Line item groups
+  """
+  lineItemGroups(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): LineItemGroupConnection!
+
+  """
+  Is this from a merch order?
+  """
+  merch: Boolean!
+
+  """
+  Nickname
+  """
+  nickname: String
+
+  """
+  User who owns the order
+  """
+  owner: User
+
+  """
+  Packing slip url
+  """
+  packingSlipUrl: String!
+
+  """
+  Paid in full?
+  """
+  paidInFull: Boolean!
+
+  """
+  Payment due date
+  """
+  paymentDueAt: ISO8601Date!
+
+  """
+  Payment request
+  """
+  paymentRequest: PaymentRequest
+
+  """
+  Payment term
+  """
+  paymentTerm: PaymentTerm
+
+  """
+  Production files
+  """
+  productionFiles(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ProductionFileConnection!
+
+  """
+  Production notes
+  """
+  productionNote: String
+
+  """
+  Public hash
+  """
+  publicHash: String!
+
+  """
+  Public pdf url
+  """
+  publicPdf: String!
+
+  """
+  Public url
+  """
+  publicUrl: String!
+
+  """
+  Sales tax
+  """
+  salesTax: Float
+
+  """
+  Sales Tax Amount
+  """
+  salesTaxAmount: Float
+
+  """
+  Shipping address
+  """
+  shippingAddress: CustomerAddress
+
+  """
+  Start date
+  """
+  startAt: ISO8601DateTime!
+
+  """
+  Status
+  """
+  status: Status!
+
+  """
+  Subtotal
+  """
+  subtotal: Float
+
+  """
+  Tasks
+  """
+  tags: [String!]!
+
+  """
+  Tasks
+  """
+  tasks(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): TaskConnection!
+
+  """
+  Messages
+  """
+  threadSummary: ThreadSummary
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Total
+  """
+  total: Float
+
+  """
+  Total quantity of items
+  """
+  totalQuantity: Int
+
+  """
+  Total untaxed
+  """
+  totalUntaxed: Float
+
+  """
+  Url
+  """
+  url: String!
+
+  """
+  Invoice #
+  """
+  visualId: ID
+
+  """
+  PO Number
+  """
+  visualPoNumber: String
+
+  """
+  Workorder url
+  """
+  workorderUrl: String!
+}
+
+"""
+The connection type for Invoice.
+"""
+type InvoiceConnection {
+  """
+  A list of edges.
+  """
+  edges: [InvoiceEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Invoice!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type InvoiceEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Invoice!
+}
+
+"""
+Account invoice information
+"""
+type InvoiceInformation {
+  """
+  Currency ISO code
+  """
+  currency: String!
+
+  """
+  Invoice commentary
+  """
+  invoiceCommentary: String
+
+  """
+  Sales tax
+  """
+  salesTax: Float!
+
+  """
+  Show invoice PO number?
+  """
+  showInvoicePoNumber: Boolean!
+
+  """
+  Terms and Conditions
+  """
+  termsAndConditions: String
+}
+
+"""
+Input for updating an invoice
+"""
+input InvoiceInput {
+  """
+  Billing address
+  """
+  billingAddress: CustomerAddressInput
+
+  """
+  Customer contact
+  """
+  contact: IDInput
+
+  """
+  Contractor profile
+  """
+  contractorProfile: IDInput
+
+  """
+  Created date
+  """
+  createdAt: ISO8601Date
+
+  """
+  Customer due date
+  """
+  customerDueAt: ISO8601Date
+
+  """
+  Customer note
+  """
+  customerNote: String
+
+  """
+  Delivery method
+  """
+  deliveryMethod: IDInput
+
+  """
+  Discount
+  """
+  discount: Float
+
+  """
+  Discount is percentage?
+  """
+  discountAsPercentage: Boolean
+
+  """
+  Production due date
+  """
+  dueAt: ISO8601DateTime
+
+  """
+  Invoice date
+  """
+  invoiceAt: ISO8601Date
+
+  """
+  Nickname
+  """
+  nickname: String
+
+  """
+  User who owns the order
+  """
+  owner: IDInput
+
+  """
+  Payment due date
+  """
+  paymentDueAt: ISO8601Date
+
+  """
+  Payment term
+  """
+  paymentTerm: IDInput
+
+  """
+  Production notes
+  """
+  productionNote: String
+
+  """
+  Sales tax
+  """
+  salesTax: Float
+
+  """
+  Shipping address
+  """
+  shippingAddress: CustomerAddressInput
+
+  """
+  Start date
+  """
+  startAt: ISO8601DateTime
+
+  """
+  Tasks
+  """
+  tags: [String!]
+
+  """
+  PO Number
+  """
+  visualPoNumber: String
+
+  """
+  Invoice #
+  """
+  visualId: ID
+}
+
+"""
+Order item
+"""
+type LineItem implements IDed & Timestamps {
+  """
+  Category
+  """
+  category: Category
+
+  """
+  Color
+  """
+  color: String
+
+  """
+  Description
+  """
+  description: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Item #
+  """
+  itemNumber: String
+
+  """
+  Total quantities
+  """
+  items: Int!
+
+  """
+  The line item group this belongs to
+  """
+  lineItemGroup: LineItemGroup!
+
+  """
+  When not null, override the matrix's markup percentage for the product
+  """
+  markupPercentage: Float
+
+  """
+  Is this from a merch order?
+  """
+  merch: Boolean!
+
+  """
+  The mockups
+  """
+  mockups(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): MockupConnection!
+
+  """
+  Personalizations
+  """
+  personalizations: [Personalization!]
+
+  """
+  Purchase order line item
+  """
+  poLineItem: PoLineItem
+
+  """
+  Position
+  """
+  position: Int!
+
+  """
+  Price per item
+  """
+  price: Float
+
+  """
+  Price receipt showing how price was calculated
+  """
+  priceReceipt: LineItemPriceReceipt
+
+  """
+  Product
+  """
+  product: Product
+
+  """
+  Product status
+  """
+  productStatus: LineItemStatus
+
+  """
+  Size counts
+  """
+  sizes: [LineItemSizeCount!]!
+
+  """
+  Taxable?
+  """
+  taxed: Boolean!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for LineItem.
+"""
+type LineItemConnection {
+  """
+  A list of edges.
+  """
+  edges: [LineItemEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [LineItem!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a Line Item
+"""
+input LineItemCreateInput {
+  """
+  Category
+  """
+  category: IDInput
+
+  """
+  Color
+  """
+  color: String
+
+  """
+  Description
+  """
+  description: String
+
+  """
+  Item #
+  """
+  itemNumber: String
+
+  """
+  The line item group this belongs to
+  """
+  lineItemGroup: IDInput
+
+  """
+  When not null, override the matrix's markup percentage for the product
+  """
+  markupPercentage: Float
+
+  """
+  Position
+  """
+  position: Int!
+
+  """
+  Price per item
+  """
+  price: Float
+
+  """
+  Product
+  """
+  product: IDInput
+
+  """
+  Product status
+  """
+  productStatus: LineItemStatus
+
+  """
+  Size counts
+  """
+  sizes: [LineItemSizeCountInput!]
+
+  """
+  Taxable?
+  """
+  taxed: Boolean
+
+  """
+  Use a price receipt signature to set the price of the line item
+  """
+  priceReceiptSignature: String
+
+  """
+  List of mockups to create
+  """
+  mockups: [MockupCreateInput!]
+}
+
+"""
+Input for creating a line item
+"""
+input LineItemCreatesInput {
+  """
+  ID of line item group to create this on
+  """
+  lineItemGroupId: ID!
+
+  """
+  Create line item values
+  """
+  input: LineItemCreateInput!
+}
+
+"""
+An edge in a connection.
+"""
+type LineItemEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: LineItem!
+}
+
+"""
+Line item styles
+"""
+type LineItemEnabledColumns {
+  """
+  Category
+  """
+  category: Boolean!
+
+  """
+  Color
+  """
+  color: Boolean!
+
+  """
+  Item #
+  """
+  itemNumber: Boolean!
+
+  """
+  Markup %
+  """
+  markupPercentage: Boolean!
+
+  """
+  Sizes enabled for the group
+  """
+  sizes: [LineItemSize!]!
+}
+
+"""
+Input for a line item group enabled columns
+"""
+input LineItemEnabledColumnsInput {
+  """
+  Category
+  """
+  category: Boolean
+
+  """
+  Color
+  """
+  color: Boolean
+
+  """
+  Item #
+  """
+  itemNumber: Boolean
+
+  """
+  Markup %
+  """
+  markupPercentage: Boolean
+
+  """
+  Sizes enabled for the group
+  """
+  sizes: [LineItemSize!]
+}
+
+"""
+Line item group
+"""
+type LineItemGroup implements IDed & Timestamps {
+  """
+  Columns enabled for the group
+  """
+  enabledColumns: LineItemEnabledColumns!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  The imprints
+  """
+  imprints(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ImprintConnection!
+
+  """
+  Line items
+  """
+  lineItems(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): LineItemConnection!
+
+  """
+  Quote or Invoice this line item group belongs to
+  """
+  order: OrderUnion!
+
+  """
+  Order position
+  """
+  position: Int!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for LineItemGroup.
+"""
+type LineItemGroupConnection {
+  """
+  A list of edges.
+  """
+  edges: [LineItemGroupEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [LineItemGroup!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for a line item group
+"""
+input LineItemGroupCreateInput {
+  """
+  Columns enabled for the group
+  """
+  enabledColumns: LineItemEnabledColumnsInput
+
+  """
+  Order position
+  """
+  position: Int!
+
+  """
+  List of line items to create
+  """
+  lineItems: [LineItemCreateInput!]
+
+  """
+  List imprints to create
+  """
+  imprints: [ImprintCreateInput!]
+}
+
+"""
+Input for creating a line item group
+"""
+input LineItemGroupCreatesInput {
+  """
+  ID of quote or invoice to add this line item group to
+  """
+  parentId: ID!
+
+  """
+  Values to create the line item group with
+  """
+  input: LineItemGroupCreateInput!
+}
+
+"""
+An edge in a connection.
+"""
+type LineItemGroupEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: LineItemGroup!
+}
+
+"""
+Input for a line item group
+"""
+input LineItemGroupInput {
+  """
+  Columns enabled for the group
+  """
+  enabledColumns: LineItemEnabledColumnsInput
+
+  """
+  Order position
+  """
+  position: Int!
+}
+
+"""
+Input to price a line item group
+"""
+input LineItemGroupPricingInput {
+  """
+  Columns enabled for the group
+  """
+  enabledColumns: LineItemEnabledColumnsInput
+
+  """
+  Order position
+  """
+  position: Int
+
+  """
+  List of line items to price
+  """
+  lineItems: [LineItemPricingInput!]!
+
+  """
+  List imprints to use for pricing
+  """
+  imprints: [ImprintInput!]!
+}
+
+"""
+Line item styles
+"""
+type LineItemGroupSize {
+  """
+  Size code
+  """
+  code: String!
+
+  """
+  Name of the size
+  """
+  name: String!
+
+  """
+  Size enabled for the group
+  """
+  size: LineItemSize!
+}
+
+"""
+Input for updating a line item group
+"""
+input LineItemGroupUpdatesInput {
+  """
+  ID of group to update
+  """
+  id: ID!
+
+  """
+  Update group values
+  """
+  input: LineItemGroupInput!
+}
+
+"""
+Input for updating a line Item
+"""
+input LineItemInput {
+  """
+  Category
+  """
+  category: IDInput
+
+  """
+  Color
+  """
+  color: String
+
+  """
+  Description
+  """
+  description: String
+
+  """
+  Item #
+  """
+  itemNumber: String
+
+  """
+  The line item group this belongs to
+  """
+  lineItemGroup: IDInput
+
+  """
+  When not null, override the matrix's markup percentage for the product
+  """
+  markupPercentage: Float
+
+  """
+  Position
+  """
+  position: Int!
+
+  """
+  Price per item
+  """
+  price: Float
+
+  """
+  Product
+  """
+  product: IDInput
+
+  """
+  Product status
+  """
+  productStatus: LineItemStatus
+
+  """
+  Size counts
+  """
+  sizes: [LineItemSizeCountInput!]
+
+  """
+  Taxable?
+  """
+  taxed: Boolean
+
+  """
+  Use a price receipt signature to set the price of the line item
+  """
+  priceReceiptSignature: String
+}
+
+"""
+Input for creating a mockup
+"""
+input LineItemMockupCreatesInput {
+  """
+  ID of line item to create this on
+  """
+  lineItemId: ID!
+
+  """
+  Image URL to create line item mockup with
+  """
+  publicImageUrl: String!
+}
+
+"""
+Line item price receipt
+"""
+type LineItemPriceReceipt {
+  """
+  The matrix's markup percentage for the product
+  """
+  defaultMarkupPercentage: Float
+
+  """
+  Description of how the price was calculated
+  """
+  description: String
+
+  """
+  Calculated price
+  """
+  price: Float
+
+  """
+  Signed receipt
+  """
+  signature: String
+}
+
+"""
+Line item input for pricing a line item group
+"""
+input LineItemPricingInput {
+  """
+  Category
+  """
+  category: IDInput
+
+  """
+  Color
+  """
+  color: String
+
+  """
+  Description
+  """
+  description: String
+
+  """
+  Item #
+  """
+  itemNumber: String
+
+  """
+  The line item group this belongs to
+  """
+  lineItemGroup: IDInput
+
+  """
+  When not null, override the matrix's markup percentage for the product
+  """
+  markupPercentage: Float
+
+  """
+  Position
+  """
+  position: Int
+
+  """
+  Price per item
+  """
+  price: Float
+
+  """
+  Product
+  """
+  product: IDInput
+
+  """
+  Product status
+  """
+  productStatus: LineItemStatus
+
+  """
+  Size counts
+  """
+  sizes: [LineItemSizeCountInput!]
+
+  """
+  Taxable?
+  """
+  taxed: Boolean
+
+  """
+  Use a price receipt signature to set the price of the line item
+  """
+  priceReceiptSignature: String
+}
+
+"""
+Sizes of an item
+"""
+enum LineItemSize {
+  """
+  size_yxs
+  """
+  size_yxs
+
+  """
+  size_ys
+  """
+  size_ys
+
+  """
+  size_ym
+  """
+  size_ym
+
+  """
+  size_yl
+  """
+  size_yl
+
+  """
+  size_yxl
+  """
+  size_yxl
+
+  """
+  size_xs
+  """
+  size_xs
+
+  """
+  size_s
+  """
+  size_s
+
+  """
+  size_m
+  """
+  size_m
+
+  """
+  size_l
+  """
+  size_l
+
+  """
+  size_xl
+  """
+  size_xl
+
+  """
+  size_2xl
+  """
+  size_2xl
+
+  """
+  size_3xl
+  """
+  size_3xl
+
+  """
+  size_4xl
+  """
+  size_4xl
+
+  """
+  size_5xl
+  """
+  size_5xl
+
+  """
+  size_6xl
+  """
+  size_6xl
+
+  """
+  size_other
+  """
+  size_other
+
+  """
+  size_6m
+  """
+  size_6m
+
+  """
+  size_12m
+  """
+  size_12m
+
+  """
+  size_18m
+  """
+  size_18m
+
+  """
+  size_24m
+  """
+  size_24m
+
+  """
+  size_2t
+  """
+  size_2t
+
+  """
+  size_3t
+  """
+  size_3t
+
+  """
+  size_4t
+  """
+  size_4t
+
+  """
+  size_5t
+  """
+  size_5t
+}
+
+"""
+Line item size
+"""
+type LineItemSizeCount {
+  """
+  Count
+  """
+  count: Int
+
+  """
+  Size
+  """
+  size: LineItemSize!
+}
+
+"""
+Input for updating line Item's styles
+"""
+input LineItemSizeCountInput {
+  """
+  Count
+  """
+  count: Int
+
+  """
+  Size
+  """
+  size: LineItemSize!
+}
+
+"""
+Line item statuses
+"""
+enum LineItemStatus {
+  """
+  Item needs ordering
+  """
+  need_ordering
+
+  """
+  Item is attached to PO
+  """
+  attached_to_po
+
+  """
+  Item is ordered
+  """
+  ordered
+
+  """
+  Item is in
+  """
+  in
+}
+
+"""
+Input for updating a line item
+"""
+input LineItemUpdatesInput {
+  """
+  ID of line item to update
+  """
+  id: ID!
+
+  """
+  Update line item values
+  """
+  input: LineItemInput!
+}
+
+type LoggedIn {
+  """
+  Session token
+  """
+  token: String!
+
+  """
+  Logged in user
+  """
+  user: User!
+}
+
+"""
+Address
+"""
+interface MailAddress {
+  """
+  Address line 1
+  """
+  address1: String
+
+  """
+  Address line 2
+  """
+  address2: String
+
+  """
+  City
+  """
+  city: String
+
+  """
+  Country
+  """
+  country: String
+
+  """
+  Country ISO
+  """
+  countryIso: String
+
+  """
+  State
+  """
+  state: String
+
+  """
+  State ISO
+  """
+  stateIso: String
+
+  """
+  Zip code
+  """
+  zipCode: String
+}
+
+"""
+Billing address
+"""
+type MerchAddress implements IDed & MailAddress & Timestamps {
+  """
+  Address line 1
+  """
+  address1: String
+
+  """
+  Address line 2
+  """
+  address2: String
+
+  """
+  City
+  """
+  city: String
+
+  """
+  Country
+  """
+  country: String
+
+  """
+  Country ISO
+  """
+  countryIso: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String
+
+  """
+  Phone
+  """
+  phone: String
+
+  """
+  Is this address residential?
+  """
+  residential: Boolean
+
+  """
+  State
+  """
+  state: String
+
+  """
+  State ISO
+  """
+  stateIso: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Zip code
+  """
+  zipCode: String
+}
+
+"""
+Merch order
+"""
+type MerchOrder implements IDed & Timestamps & VisualIDed {
+  """
+  Billing address
+  """
+  billingAddress: MerchAddress
+
+  """
+  Date the order was placed
+  """
+  completedAt: ISO8601DateTime
+
+  """
+  Total sale
+  """
+  customerNotes: String
+
+  """
+  How will the customer receive the order
+  """
+  delivery: MerchOrderDelivery!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Item total
+  """
+  itemTotal: Float!
+
+  """
+  Promotional discount
+  """
+  promoTotal: Float!
+
+  """
+  Order quantity
+  """
+  quantity: Int!
+
+  """
+  Shipping address
+  """
+  shippingAddress: MerchAddress
+
+  """
+  Order status
+  """
+  status: MerchOrderStatus!
+
+  """
+  The merch store this order belongs to
+  """
+  store: MerchStore!
+
+  """
+  Taxes
+  """
+  tax: Float!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Total sale
+  """
+  total: Float!
+
+  """
+  Visual ID Number
+  """
+  visualId: ID
+}
+
+"""
+The connection type for MerchOrder.
+"""
+type MerchOrderConnection {
+  """
+  A list of edges.
+  """
+  edges: [MerchOrderEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [MerchOrder!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Delivery details for a merch order
+"""
+type MerchOrderDelivery {
+  """
+  Flat rate delivery?
+  """
+  flatRate: Boolean
+
+  """
+  How will the customer receive the order
+  """
+  method: MerchOrderDeliveryMethod!
+
+  """
+  Delivery total
+  """
+  total: Float
+
+  """
+  Actual flat rate delivery total
+  """
+  totalActual: Float
+}
+
+"""
+The delivery method for a merch order
+"""
+enum MerchOrderDeliveryMethod {
+  """
+  Order will be delivered
+  """
+  DELIVERY
+
+  """
+  Order will be picked up
+  """
+  PICKUP
+}
+
+"""
+An edge in a connection.
+"""
+type MerchOrderEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: MerchOrder!
+}
+
+"""
+Status of a merch order
+"""
+enum MerchOrderStatus {
+  """
+  Order is unfulfilled
+  """
+  UNFULFILLED
+
+  """
+  Order is fulfilled
+  """
+  FULFILLED
+}
+
+"""
+Merch store
+"""
+type MerchStore implements IDed & Timestamps {
+  """
+  Date the order was completed
+  """
+  closesAt: ISO8601DateTime
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name of the store
+  """
+  name: String!
+
+  """
+  List of merch orders on the store
+  """
+  orders(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+
+    """
+    Only list orders that have been completed after this datetime
+    """
+    completedAfter: ISO8601DateTime
+
+    """
+    Only list orders that have been completed before this datetime
+    """
+    completedBefore: ISO8601DateTime
+
+    """
+    Only list orders that have this status
+    """
+    status: MerchOrderStatus
+  ): MerchOrderConnection!
+
+  """
+  Store status
+  """
+  status: MerchStoreStatus!
+
+  """
+  Store summary
+  """
+  summary: MerchStoreSummary!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for MerchStore.
+"""
+type MerchStoreConnection {
+  """
+  A list of edges.
+  """
+  edges: [MerchStoreEdge]
+
+  """
+  A list of nodes.
+  """
+  nodes: [MerchStore]
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type MerchStoreEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: MerchStore
+}
+
+"""
+Status of a merch store
+"""
+enum MerchStoreStatus {
+  """
+  Store is live
+  """
+  LIVE
+
+  """
+  Store is closed
+  """
+  CLOSED
+}
+
+"""
+Merch store summary
+"""
+type MerchStoreSummary {
+  """
+  Total items sold
+  """
+  itemsSold: Int!
+
+  """
+  Total sales
+  """
+  totalSales: Float!
+
+  """
+  Total tax
+  """
+  totalTax: Float!
+}
+
+"""
+Message
+"""
+interface Message {
+  """
+  Attached files
+  """
+  attachments(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): MessageAttachmentConnection!
+
+  """
+  Incoming message?
+  """
+  incoming: Boolean!
+
+  """
+  Who was the recipient?
+  """
+  recipient: MessageParticipantUnion
+
+  """
+  Who was the sender?
+  """
+  sender: MessageParticipantUnion
+
+  """
+  Delivery status
+  """
+  status: MessageDeliveryStatus!
+
+  """
+  Text
+  """
+  text: String!
+
+  """
+  To
+  """
+  to: String!
+}
+
+"""
+Attachment
+"""
+type MessageAttachment {
+  """
+  Filename
+  """
+  filename: String!
+
+  """
+  URL
+  """
+  url: String!
+}
+
+"""
+The connection type for MessageAttachment.
+"""
+type MessageAttachmentConnection {
+  """
+  A list of edges.
+  """
+  edges: [MessageAttachmentEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [MessageAttachment!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type MessageAttachmentEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: MessageAttachment!
+}
+
+"""
+The status type
+"""
+enum MessageDeliveryStatus {
+  """
+  Bounced
+  """
+  BOUNCED
+
+  """
+  Clicked
+  """
+  CLICKED
+
+  """
+  Delivered
+  """
+  DELIVERED
+
+  """
+  Error
+  """
+  ERROR
+
+  """
+  Linked
+  """
+  LINKED
+
+  """
+  Opened
+  """
+  OPENED
+
+  """
+  Pay for
+  """
+  PAY_FOR
+
+  """
+  Pending
+  """
+  PENDING
+
+  """
+  Rejected
+  """
+  REJECTED
+
+  """
+  Sent
+  """
+  SENT
+
+  """
+  Other
+  """
+  OTHER
+}
+
+"""
+Message Recipient
+"""
+union MessageParticipantUnion = Contact | User
+
+"""
+Messages
+"""
+union MessageUnion = EmailMessage | TextMessage
+
+"""
+The connection type for MessageUnion.
+"""
+type MessageUnionConnection {
+  """
+  A list of edges.
+  """
+  edges: [MessageUnionEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [MessageUnion!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type MessageUnionEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: MessageUnion!
+}
+
+"""
+Mockup
+"""
+type Mockup implements IDed & Timestamps {
+  """
+  Should the thumbnail be used?
+  """
+  displayThumbnail: Boolean
+
+  """
+  Full size image url
+  """
+  fullImageUrl: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  MIME type of the image
+  """
+  mimeType: String
+
+  """
+  URL to the thumbnail of the image
+  """
+  thumbnailUrl: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for Mockup.
+"""
+type MockupConnection {
+  """
+  A list of edges.
+  """
+  edges: [MockupEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Mockup!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a Mockup
+"""
+input MockupCreateInput {
+  """
+  Public URL of mockup image
+  """
+  publicImageUrl: String!
+}
+
+"""
+An edge in a connection.
+"""
+type MockupEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Mockup!
+}
+
+type Mutation {
+  """
+  Approve an approval request
+  """
+  approvalRequestApprove(
+    """
+    ID of approval request to approve
+    """
+    id: ID!
+
+    """
+    Who approved the request
+    """
+    respondedBy: String!
+  ): ApprovalRequest
+
+  """
+  Create an approval request on a quote or invoice
+  """
+  approvalRequestCreate(
+    """
+    ID of quote or invoice to add this approval request to
+    """
+    parentId: ID!
+
+    """
+    Create approval request values
+    """
+    input: ApprovalRequestCreateInput!
+  ): ApprovalRequest
+
+  """
+  Revoke an approval request
+  """
+  approvalRequestRevoke(
+    """
+    ID of approval request to revoke
+    """
+    id: ID!
+  ): ApprovalRequest
+
+  """
+  Unapprove an approval request
+  """
+  approvalRequestUnapprove(
+    """
+    ID of approval request to unapprove
+    """
+    id: ID!
+  ): ApprovalRequest
+
+  """
+  Create a contact
+  """
+  contactCreate(
+    """
+    ID of the Customer to whom this Contact belongs
+    """
+    id: ID!
+
+    """
+    Create contact values
+    """
+    input: ContactInput!
+  ): Contact
+
+  """
+  Delete a contact
+  """
+  contactDelete(
+    """
+    ID of contact to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Update a contact
+  """
+  contactUpdate(
+    """
+    ID of contact to update
+    """
+    id: ID!
+
+    """
+    Values with which to update the contact
+    """
+    input: ContactInput!
+  ): Contact
+
+  """
+  Create a custom address on a quote or invoice
+  """
+  customAddressCreate(
+    """
+    ID of quote or invoice to add this address to
+    """
+    parentId: ID!
+
+    """
+    Create address values
+    """
+    input: CustomAddressInput!
+  ): CustomAddress
+
+  """
+  Create multiple custom addresses on a quote or invoice
+  """
+  customAddressCreates(
+    """
+    Values to create addresses with
+    """
+    inputs: [CustomAddressCreatesInput!]!
+  ): [CustomAddress!]
+
+  """
+  Delete custom address
+  """
+  customAddressDelete(
+    """
+    ID of custom address to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Delete multiple custom addresses
+  """
+  customAddressDeletes(
+    """
+    IDs of custom addresses to delete
+    """
+    ids: [ID!]!
+  ): [DeletedID!]
+
+  """
+  Update a custom address
+  """
+  customAddressUpdate(
+    """
+    ID of address to update
+    """
+    id: ID!
+
+    """
+    Update address values
+    """
+    input: CustomAddressInput!
+  ): CustomAddress
+
+  """
+  Update multiple custom addresses
+  """
+  customAddressUpdates(
+    """
+    IDed list of custom addresses to update
+    """
+    inputs: [CustomAddressUpdatesInput!]!
+  ): [CustomAddress!]
+
+  """
+  Create a customer
+  """
+  customerCreate(
+    """
+    Create customer values
+    """
+    input: CustomerCreateInput!
+  ): Customer
+
+  """
+  Delete a customer
+  """
+  customerDelete(
+    """
+    ID of customer to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Update a customer
+  """
+  customerUpdate(
+    """
+    ID of customer to update
+    """
+    id: ID!
+
+    """
+    Update customer values
+    """
+    input: CustomerInput!
+  ): Customer
+
+  """
+  Archive/restore a delivery method
+  """
+  deliveryMethodArchive(
+    """
+    ID of delivery method to archive/restore
+    """
+    id: ID!
+
+    """
+    Is the delivery method archived?
+    """
+    archived: Boolean!
+  ): DeliveryMethod
+
+  """
+  Create a delivery method
+  """
+  deliveryMethodCreate(
+    """
+    Create delivery method values
+    """
+    input: DeliveryMethodInput!
+  ): DeliveryMethod
+
+  """
+  Update a delivery method
+  """
+  deliveryMethodUpdate(
+    """
+    ID of delivery method to update
+    """
+    id: ID!
+
+    """
+    Update delivery method values
+    """
+    input: DeliveryMethodInput!
+  ): DeliveryMethod
+
+  """
+  Create an email message
+  """
+  emailMessageCreate(
+    """
+    Create email message values
+    """
+    input: EmailMessageInput!
+
+    """
+    ID of the quote or invoice this message is related to
+    """
+    parentId: ID!
+  ): EmailMessage
+
+  """
+  Create a fee on a quote or invoice
+  """
+  feeCreate(
+    """
+    ID of quote or invoice to add this fee to
+    """
+    parentId: ID!
+
+    """
+    Create fee values
+    """
+    input: FeeInput!
+  ): Fee
+
+  """
+  Create multiple fees on a quote or invoice
+  """
+  feeCreates(
+    """
+    Values to create fees with
+    """
+    inputs: [FeeCreatesInput!]!
+  ): [Fee!]
+
+  """
+  Delete fee
+  """
+  feeDelete(
+    """
+    ID of fee to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Delete multiple fees
+  """
+  feeDeletes(
+    """
+    IDs of fees to delete
+    """
+    ids: [ID!]!
+  ): [DeletedID!]
+
+  """
+  Update a fee
+  """
+  feeUpdate(
+    """
+    ID of fee to update
+    """
+    id: ID!
+
+    """
+    Update fee values
+    """
+    input: FeeInput!
+  ): Fee
+
+  """
+  Update multiple fees
+  """
+  feeUpdates(
+    """
+    IDed list of fees to update
+    """
+    inputs: [FeeUpdatesInput!]!
+  ): [Fee!]
+
+  """
+  Create an imprint
+  """
+  imprintCreate(
+    """
+    ID of line item group to add this imprint to
+    """
+    lineItemGroupId: ID!
+
+    """
+    Values to create the imprint with
+    """
+    input: ImprintCreateInput!
+  ): Imprint
+
+  """
+  Create multiple imprints
+  """
+  imprintCreates(
+    """
+    Values to create the imprints with
+    """
+    inputs: [ImprintCreatesInput!]!
+  ): [Imprint!]
+
+  """
+  Delete an imprint
+  """
+  imprintDelete(
+    """
+    ID of imprint to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Delete multiple imprints
+  """
+  imprintDeletes(
+    """
+    IDs of imprints to delete
+    """
+    ids: [ID!]!
+  ): [DeletedID!]
+
+  """
+  Create a mockup
+  """
+  imprintMockupCreate(
+    """
+    ID of the imprint to create the mockup on
+    """
+    imprintId: ID!
+
+    """
+    Public URL of mockup image
+    """
+    publicImageUrl: String!
+  ): Mockup
+
+  """
+  Create multiple mockups
+  """
+  imprintMockupCreates(
+    """
+    Public URLs of mockup images
+    """
+    inputs: [ImprintMockupCreatesInput!]!
+  ): [Mockup!]
+
+  """
+  Update an imprint
+  """
+  imprintUpdate(
+    """
+    ID of imprint to update
+    """
+    id: ID!
+
+    """
+    Values to update the imprint with
+    """
+    input: ImprintInput!
+  ): Imprint
+
+  """
+  Update multiple imprints
+  """
+  imprintUpdates(
+    """
+    List of values to update the imprints with
+    """
+    inputs: [ImprintUpdatesInput!]!
+  ): [Imprint!]
+
+  """
+  Create an inquiry
+  """
+  inquiryCreate(
+    """
+    Create inquiry values
+    """
+    input: InquiryCreateInput!
+  ): Inquiry
+
+  """
+  Delete an inquiry
+  """
+  inquiryDelete(
+    """
+    ID of inquiry to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Update an inquiry
+  """
+  inquiryUpdate(
+    """
+    ID of inquiry to update
+    """
+    id: ID!
+
+    """
+    Update inquiry values
+    """
+    input: InquiryInput!
+  ): Inquiry
+
+  """
+  Delete an invoice
+  """
+  invoiceDelete(
+    """
+    ID of invoice to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Duplicate an invoice
+  """
+  invoiceDuplicate(
+    """
+    ID of invoice to duplicate
+    """
+    id: ID!
+  ): Quote
+
+  """
+  Update an invoice
+  """
+  invoiceUpdate(
+    """
+    ID of invoice to update
+    """
+    id: ID!
+
+    """
+    Update invoice values
+    """
+    input: InvoiceInput!
+  ): Invoice
+
+  """
+  Create a line item
+  """
+  lineItemCreate(
+    """
+    ID of line item group to add this line item to
+    """
+    lineItemGroupId: ID!
+
+    """
+    Values to create the line item with
+    """
+    input: LineItemCreateInput!
+  ): LineItem
+
+  """
+  Create multiple line items
+  """
+  lineItemCreates(
+    """
+    Values to create the line items with
+    """
+    inputs: [LineItemCreatesInput!]!
+  ): [LineItem!]
+
+  """
+  Delete a line item
+  """
+  lineItemDelete(
+    """
+    ID of line item to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Delete multiple line items
+  """
+  lineItemDeletes(
+    """
+    IDs of line items to delete
+    """
+    ids: [ID!]!
+  ): [DeletedID!]
+
+  """
+  Create a line item group
+  """
+  lineItemGroupCreate(
+    """
+    ID of quote or invoice to add this line item group to
+    """
+    parentId: ID!
+
+    """
+    Values to create the line item group with
+    """
+    input: LineItemGroupCreateInput!
+  ): LineItemGroup
+
+  """
+  Create multiple line item groups
+  """
+  lineItemGroupCreates(
+    """
+    Values to create the line item groups with
+    """
+    inputs: [LineItemGroupCreatesInput!]!
+  ): [LineItemGroup!]
+
+  """
+  Delete a line item group
+  """
+  lineItemGroupDelete(
+    """
+    ID to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Delete multiple line item groups
+  """
+  lineItemGroupDeletes(
+    """
+    IDs of line item groups to delete
+    """
+    ids: [ID!]!
+  ): [DeletedID!]
+
+  """
+  Update a line item group
+  """
+  lineItemGroupUpdate(
+    """
+    ID to update
+    """
+    id: ID!
+
+    """
+    Update line item group values
+    """
+    input: LineItemGroupInput!
+  ): LineItemGroup
+
+  """
+  Update multiple line item groups
+  """
+  lineItemGroupUpdates(
+    """
+    IDed list of line item groups to update
+    """
+    inputs: [LineItemGroupUpdatesInput!]!
+  ): [LineItemGroup!]
+
+  """
+  Create a mockup
+  """
+  lineItemMockupCreate(
+    """
+    ID of the line item to create the mockup on
+    """
+    lineItemId: ID!
+
+    """
+    Public URL of mockup image
+    """
+    publicImageUrl: String!
+  ): Mockup
+
+  """
+  Create multiple mockups
+  """
+  lineItemMockupCreates(
+    """
+    Public URLs of mockup images
+    """
+    inputs: [LineItemMockupCreatesInput!]!
+  ): [Mockup!]
+
+  """
+  Update a line item
+  """
+  lineItemUpdate(
+    """
+    ID of line item to update
+    """
+    id: ID!
+
+    """
+    Values to update the line item with
+    """
+    input: LineItemInput!
+  ): LineItem
+
+  """
+  Update multiple line items
+  """
+  lineItemUpdates(
+    """
+    IDed values to update the line items with
+    """
+    inputs: [LineItemUpdatesInput!]!
+  ): [LineItem!]
+
+  """
+  Login and get a session token
+  """
+  login(
+    """
+    Login with this email
+    """
+    email: String!
+
+    """
+    Login with this password
+    """
+    password: String!
+
+    """
+    The mobile device name
+    """
+    deviceName: String
+
+    """
+    The mobile device ID
+    """
+    deviceToken: String
+  ): LoggedIn
+
+  """
+  Logout and invalidate the session token
+  """
+  logout: String
+
+  """
+  Delete a mockup
+  """
+  mockupDelete(
+    """
+    ID of mockup to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Delete multiple mockups
+  """
+  mockupDeletes(
+    """
+    IDs of mockups to delete
+    """
+    ids: [ID!]!
+  ): [DeletedID!]
+
+  """
+  Create a payment request on a quote or invoice
+  """
+  paymentRequestCreate(
+    """
+    ID of quote or invoice to add this payment request to
+    """
+    parentId: ID!
+
+    """
+    Create payment request values
+    """
+    input: PaymentRequestCreateInput!
+  ): PaymentRequest
+
+  """
+  Delete a payment request
+  """
+  paymentRequestDelete(
+    """
+    ID of payment request to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Archive/restore a payment term
+  """
+  paymentTermArchive(
+    """
+    ID of payment term to archive/restore
+    """
+    id: ID!
+
+    """
+    Is the payment term archived?
+    """
+    archived: Boolean!
+  ): PaymentTerm
+
+  """
+  Create a payment term
+  """
+  paymentTermCreate(
+    """
+    Create payment term values
+    """
+    input: PaymentTermInput!
+  ): PaymentTerm
+
+  """
+  Update a payment term
+  """
+  paymentTermUpdate(
+    """
+    ID of payment term to update
+    """
+    id: ID!
+
+    """
+    Update payment term values
+    """
+    input: PaymentTermInput!
+  ): PaymentTerm
+
+  """
+  Create a Preset Task
+  """
+  presetTaskCreate(
+    """
+    ID of the preset task group to which this preset task belongs
+    """
+    id: ID!
+
+    """
+    Create preset task values
+    """
+    input: PresetTaskCreateInput!
+  ): PresetTask
+
+  """
+  Delete a Preset Task
+  """
+  presetTaskDelete(
+    """
+    ID of the preset task to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Apply a Preset Task Group to an Order
+  """
+  presetTaskGroupApply(
+    """
+    ID of the preset task group to apply
+    """
+    presetTaskGroupId: ID!
+
+    """
+    ID of the order to apply the preset tasks to
+    """
+    orderId: ID!
+  ): [Task!]
+
+  """
+  Create a Preset Task Group
+  """
+  presetTaskGroupCreate(
+    """
+    Create Preset Task Group values
+    """
+    input: PresetTaskGroupCreateInput!
+  ): PresetTaskGroup
+
+  """
+  Delete a preset task group
+  """
+  presetTaskGroupDelete(
+    """
+    ID of preset task group to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Update a Preset Task Group
+  """
+  presetTaskGroupUpdate(
+    """
+    ID of the preset task group to update
+    """
+    id: ID!
+
+    """
+    Update preset task values
+    """
+    input: PresetTaskGroupInput!
+  ): PresetTaskGroup
+
+  """
+  Update a Preset Task
+  """
+  presetTaskUpdate(
+    """
+    ID of the preset task to update
+    """
+    id: ID!
+
+    """
+    Update preset task values
+    """
+    input: PresetTaskInput!
+  ): PresetTask
+
+  """
+  Create a production file
+  """
+  productionFileCreate(
+    """
+    ID of the quote or invoice to create the production file on
+    """
+    parentId: ID!
+
+    """
+    Public URL of production file
+    """
+    publicFileUrl: String!
+  ): ProductionFile
+
+  """
+  Create multiple production files
+  """
+  productionFileCreates(
+    """
+    Values to create production files with
+    """
+    inputs: [ProductionFileCreatesInput!]!
+  ): [ProductionFile!]
+
+  """
+  Delete a production file
+  """
+  productionFileDelete(
+    """
+    ID of production file to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Delete multiple production files
+  """
+  productionFileDeletes(
+    """
+    IDs of production files to delete
+    """
+    ids: [ID!]!
+  ): [DeletedID!]
+
+  """
+  Create a quote
+  """
+  quoteCreate(
+    """
+    Create quote values
+    """
+    input: QuoteCreateInput!
+  ): Quote
+
+  """
+  Delete a quote
+  """
+  quoteDelete(
+    """
+    ID of quote to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Duplicate a quote
+  """
+  quoteDuplicate(
+    """
+    ID of quote to duplicate
+    """
+    id: ID!
+  ): Quote
+
+  """
+  Update a quote
+  """
+  quoteUpdate(
+    """
+    ID of quote to update
+    """
+    id: ID!
+
+    """
+    Update quote values
+    """
+    input: QuoteInput!
+  ): Quote
+
+  """
+  Set the status
+  """
+  statusUpdate(
+    """
+    ID of quote or invoice to set the status for
+    """
+    parentId: ID!
+
+    """
+    Status ID to set
+    """
+    statusId: ID!
+  ): OrderUnion
+
+  """
+  Create a task
+  """
+  taskCreate(
+    """
+    Create task values
+    """
+    input: TaskCreateInput!
+  ): Task
+
+  """
+  Delete a task
+  """
+  taskDelete(
+    """
+    ID of task to delete
+    """
+    id: ID!
+  ): DeletedID
+
+  """
+  Update a task
+  """
+  taskUpdate(
+    """
+    ID of task to update
+    """
+    id: ID!
+
+    """
+    Update task values
+    """
+    input: TaskInput!
+  ): Task
+
+  """
+  Update a thread
+  """
+  threadUpdate(
+    """
+    ID of thread to update
+    """
+    id: ID!
+
+    """
+    Is the thread unread?
+    """
+    unread: Boolean!
+  ): Thread
+}
+
+"""
+Object created and updated dates
+"""
+type ObjectTimestamps {
+  """
+  The date this was created
+  """
+  createdAt: ISO8601DateTime!
+
+  """
+  The date this was updated
+  """
+  updatedAt: ISO8601DateTime!
+}
+
+"""
+Which column to sort on
+"""
+enum OrderSortField {
+  """
+  When due to the customer
+  """
+  CUSTOMER_DUE_AT
+
+  """
+  The customer's name
+  """
+  CUSTOMER_NAME
+
+  """
+  The status
+  """
+  STATUS
+
+  """
+  The owner
+  """
+  OWNER
+
+  """
+  The total
+  """
+  TOTAL
+
+  """
+  The visual_id
+  """
+  VISUAL_ID
+}
+
+"""
+Quote or Invoice Union
+"""
+union OrderUnion = Invoice | Quote
+
+"""
+The connection type for OrderUnion.
+"""
+type OrderUnionConnection {
+  """
+  A list of edges.
+  """
+  edges: [OrderUnionEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [OrderUnion!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type OrderUnionEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: OrderUnion!
+}
+
+"""
+Information about pagination in a connection.
+"""
+type PageInfo {
+  """
+  When paginating forwards, the cursor to continue.
+  """
+  endCursor: String
+
+  """
+  When paginating forwards, are there more items?
+  """
+  hasNextPage: Boolean!
+
+  """
+  When paginating backwards, are there more items?
+  """
+  hasPreviousPage: Boolean!
+
+  """
+  When paginating backwards, the cursor to continue.
+  """
+  startCursor: String
+}
+
+"""
+Payment request
+"""
+type PaymentRequest implements IDed & Timestamps {
+  """
+  Amount requested
+  """
+  amount: Float!
+
+  """
+  Payment request description
+  """
+  description: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  User issuing the payment request
+  """
+  user: User
+}
+
+"""
+Input for creating a payment request
+"""
+input PaymentRequestCreateInput {
+  """
+  Amount requested
+  """
+  amount: Float!
+
+  """
+  Notification email to send
+  """
+  email: EmailInput
+}
+
+"""
+Payment term
+"""
+type PaymentTerm implements IDed & Timestamps {
+  """
+  Archived?
+  """
+  archived: Boolean!
+
+  """
+  Payment days allowed
+  """
+  days: Int!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Are there any Orders with this Payment Term?
+  """
+  inUse: Boolean!
+
+  """
+  Name
+  """
+  name: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for PaymentTerm.
+"""
+type PaymentTermConnection {
+  """
+  A list of edges.
+  """
+  edges: [PaymentTermEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [PaymentTerm!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type PaymentTermEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: PaymentTerm!
+}
+
+"""
+Input for a payment term
+"""
+input PaymentTermInput {
+  """
+  Payment days allowed
+  """
+  days: Int
+
+  """
+  Name
+  """
+  name: String
+}
+
+"""
+User Permissions
+"""
+type Permission {
+  enabled: Boolean!
+  key: String!
+  name: String!
+}
+
+"""
+Personalization
+"""
+type Personalization implements IDed & Timestamps {
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String!
+
+  """
+  Personalization
+  """
+  personalization: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+Purchase order line item status
+"""
+enum PoGoodsStatus {
+  """
+  Item needs ordering
+  """
+  not_ordered
+
+  """
+  Item is ordered
+  """
+  ordered
+
+  """
+  Item is in
+  """
+  arrived
+}
+
+"""
+Purchase order line item
+"""
+type PoLineItem implements IDed & Timestamps {
+  """
+  Category
+  """
+  category: Category
+
+  """
+  Color
+  """
+  color: String
+
+  """
+  Description
+  """
+  description: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Item #
+  """
+  itemNumber: String
+
+  """
+  Total quantities
+  """
+  items: Int!
+
+  """
+  Position
+  """
+  position: Int!
+
+  """
+  Purchase order
+  """
+  purchaseOrder: PurchaseOrder!
+
+  """
+  Size counts
+  """
+  sizes: [LineItemSizeCount!]!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for PoLineItem.
+"""
+type PoLineItemConnection {
+  """
+  A list of edges.
+  """
+  edges: [PoLineItemEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [PoLineItem!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type PoLineItemEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: PoLineItem!
+}
+
+"""
+Preset Task
+"""
+type PresetTask implements IDed & Timestamps {
+  """
+  Who the preset task is assigned to
+  """
+  assignedTo: User
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  The preset task name
+  """
+  name: String!
+
+  """
+  The preset task's position
+  """
+  position: Int
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for PresetTask.
+"""
+type PresetTaskConnection {
+  """
+  A list of edges.
+  """
+  edges: [PresetTaskEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [PresetTask!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a preset task
+"""
+input PresetTaskCreateInput {
+  """
+  Who the preset task is assigned to
+  """
+  assignedTo: IDInput
+
+  """
+  The preset task name
+  """
+  name: String!
+
+  """
+  The preset task's position
+  """
+  position: Int
+}
+
+"""
+An edge in a connection.
+"""
+type PresetTaskEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: PresetTask!
+}
+
+"""
+Preset Task Group
+"""
+type PresetTaskGroup implements IDed & Timestamps {
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Preset Tasks
+  """
+  presetTasks(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): PresetTaskConnection!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Title of the Preset Task Group
+  """
+  title: String!
+}
+
+"""
+The connection type for PresetTaskGroup.
+"""
+type PresetTaskGroupConnection {
+  """
+  A list of edges.
+  """
+  edges: [PresetTaskGroupEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [PresetTaskGroup!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a preset task group
+"""
+input PresetTaskGroupCreateInput {
+  """
+  Title of the Preset Task Group
+  """
+  title: String!
+
+  """
+  List of preset tasks to create
+  """
+  presetTasks: [PresetTaskCreateInput!]
+}
+
+"""
+An edge in a connection.
+"""
+type PresetTaskGroupEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: PresetTaskGroup!
+}
+
+"""
+Input for a preset task group
+"""
+input PresetTaskGroupInput {
+  """
+  Title of the Preset Task Group
+  """
+  title: String!
+}
+
+"""
+Input for a preset task
+"""
+input PresetTaskInput {
+  """
+  Who the preset task is assigned to
+  """
+  assignedTo: IDInput
+
+  """
+  The preset task name
+  """
+  name: String
+
+  """
+  The preset task's position
+  """
+  position: Int
+}
+
+"""
+Pricing matrix
+"""
+type PricingMatrix implements IDed & Timestamps {
+  """
+  Pricing matrix cells
+  """
+  cells(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): PricingMatrixCellConnection!
+
+  """
+  Pricing matrix columns
+  """
+  columns: [PricingMatrixColumn!]!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Type of work
+  """
+  typeOfWork: TypeOfWork
+}
+
+"""
+Pricing matrix cell
+"""
+type PricingMatrixCell implements IDed & Timestamps {
+  """
+  Pricing matrix column
+  """
+  column: PricingMatrixColumn!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Pricing Matrix
+  """
+  matrix: PricingMatrix!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for PricingMatrixCell.
+"""
+type PricingMatrixCellConnection {
+  """
+  A list of edges.
+  """
+  edges: [PricingMatrixCellEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [PricingMatrixCell!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type PricingMatrixCellEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: PricingMatrixCell!
+}
+
+"""
+Pricing matrix column
+"""
+type PricingMatrixColumn implements IDed {
+  """
+  Pricing matrix cells
+  """
+  cells(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): PricingMatrixCellConnection!
+
+  """
+  Column ID
+  """
+  columnId: ID!
+
+  """
+  Name
+  """
+  columnName: String!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Pricing Matrix
+  """
+  matrix: PricingMatrix!
+}
+
+"""
+The connection type for PricingMatrix.
+"""
+type PricingMatrixConnection {
+  """
+  A list of edges.
+  """
+  edges: [PricingMatrixEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [PricingMatrix!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type PricingMatrixEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: PricingMatrix!
+}
+
+"""
+Product
+"""
+type Product implements IDed {
+  """
+  Brand
+  """
+  brand: String
+
+  """
+  Catalog
+  """
+  catalog: ProductCatalog
+
+  """
+  Color
+  """
+  color: String
+
+  """
+  Style description
+  """
+  description: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Style number
+  """
+  itemNumber: String
+}
+
+"""
+Product Catalog
+"""
+type ProductCatalog implements IDed {
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Catalog name
+  """
+  name: String!
+}
+
+"""
+The connection type for Product.
+"""
+type ProductConnection {
+  """
+  A list of edges.
+  """
+  edges: [ProductEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Product!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type ProductEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Product!
+}
+
+"""
+Production file
+"""
+type ProductionFile implements IDed & Timestamps {
+  """
+  File url
+  """
+  fileUrl: String!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  MIME type for the file
+  """
+  mimeType: String!
+
+  """
+  Name
+  """
+  name: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for ProductionFile.
+"""
+type ProductionFileConnection {
+  """
+  A list of edges.
+  """
+  edges: [ProductionFileEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [ProductionFile!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a production file
+"""
+input ProductionFileCreateInput {
+  """
+  Public URL of production file
+  """
+  publicFileUrl: String!
+}
+
+"""
+Input for creating a production file
+"""
+input ProductionFileCreatesInput {
+  """
+  ID of the quote or invoice to create the production file on
+  """
+  parentId: ID!
+
+  """
+  Public URL of production file
+  """
+  publicFileUrl: String!
+}
+
+"""
+An edge in a connection.
+"""
+type ProductionFileEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: ProductionFile!
+}
+
+"""
+Purchase order
+"""
+type PurchaseOrder implements IDed & Timestamps {
+  """
+  Goods status
+  """
+  goodsStatus: PoGoodsStatus!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Purchase order line items
+  """
+  lineItems(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): PoLineItemConnection!
+
+  """
+  Note
+  """
+  note: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Vendor
+  """
+  vendor: Vendor!
+
+  """
+  Visual PO Number
+  """
+  visualPoId: ID!
+}
+
+type Query {
+  """
+  Get account for the current user's session
+  """
+  account: Account!
+
+  """
+  Get contact by ID
+  """
+  contact(
+    """
+    The ID of the contact to find
+    """
+    id: ID!
+  ): Contact
+
+  """
+  List of Contacts
+  """
+  contacts(
+    """
+    Only search primary contacts?
+    """
+    primaryOnly: Boolean = false
+
+    """
+    Contact search term
+    """
+    query: String
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ContactConnection!
+
+  """
+  Get customer by ID
+  """
+  customer(
+    """
+    The ID of the customer to find
+    """
+    id: ID!
+  ): Customer
+
+  """
+  Get all customers
+  """
+  customers(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): CustomerConnection!
+
+  """
+  Get all Inquiries
+  """
+  inquiries(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): InquiryConnection!
+
+  """
+  Get an Inquiry by ID
+  """
+  inquiry(
+    """
+    Inquiry ID to get
+    """
+    id: ID!
+  ): Inquiry
+
+  """
+  Get invoice by ID
+  """
+  invoice(
+    """
+    The ID of the invoice to find
+    """
+    id: ID!
+  ): Invoice
+
+  """
+  Get all invoices
+  """
+  invoices(
+    """
+    Exclude ones with these status IDs
+    """
+    excludeStatusIds: [ID!]
+
+    """
+    Find any with a due_date after this date
+    """
+    inProductionAfter: ISO8601DateTime
+
+    """
+    Find any with a start_date before this date
+    """
+    inProductionBefore: ISO8601DateTime
+
+    """
+    Query string
+    """
+    query: String
+
+    """
+    Should the sort be descending?
+    """
+    sortDescending: Boolean
+
+    """
+    Sort on this field
+    """
+    sortOn: OrderSortField
+
+    """
+    Only include ones with these status IDs
+    """
+    statusIds: [ID!]
+
+    """
+    Find any with one of these tags. Ignored if using a query
+    """
+    tags: [String!]
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): InvoiceConnection
+
+  """
+  Get a line item by ID
+  """
+  lineItem(
+    """
+    The ID of the line item to find
+    """
+    id: ID!
+  ): LineItem!
+
+  """
+  Get a line item group by ID
+  """
+  lineItemGroup(
+    """
+    The ID of the line item group to find
+    """
+    id: ID!
+  ): LineItemGroup!
+
+  """
+  Calculate line item prices in a line item group
+  """
+  lineItemGroupPricing(
+    """
+    The line item group to calculate prices
+    """
+    lineItemGroup: LineItemGroupPricingInput!
+  ): [LineItemPriceReceipt!]!
+
+  """
+  Get merch order by ID
+  """
+  merchOrder(
+    """
+    The ID of the merch order to find
+    """
+    id: ID!
+  ): MerchOrder
+
+  """
+  Get a merch store by ID
+  """
+  merchStore(
+    """
+    The ID of the merch store for find
+    """
+    id: ID!
+  ): MerchStore
+
+  """
+  List all merch stores
+  """
+  merchStores(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): MerchStoreConnection!
+
+  """
+  Get quote or invoice by ID
+  """
+  order(
+    """
+    The ID of the quote or invoice to find
+    """
+    id: ID!
+  ): OrderUnion
+
+  """
+  Get all quotes and invoices
+  """
+  orders(
+    """
+    Exclude ones with these status IDs
+    """
+    excludeStatusIds: [ID!]
+
+    """
+    Find any with a due_date after this date
+    """
+    inProductionAfter: ISO8601DateTime
+
+    """
+    Find any with a start_date before this date
+    """
+    inProductionBefore: ISO8601DateTime
+
+    """
+    Query string
+    """
+    query: String
+
+    """
+    Should the sort be descending?
+    """
+    sortDescending: Boolean
+
+    """
+    Sort on this field
+    """
+    sortOn: OrderSortField
+
+    """
+    Only include ones with these status IDs
+    """
+    statusIds: [ID!]
+
+    """
+    Find any with one of these tags. Ignored if using a query
+    """
+    tags: [String!]
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): OrderUnionConnection
+
+  """
+  List of products
+  """
+  products(
+    """
+    Product search term
+    """
+    query: String!
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ProductConnection!
+
+  """
+  Get quote by ID
+  """
+  quote(
+    """
+    The ID of the quote to find
+    """
+    id: ID!
+  ): Quote
+
+  """
+  Get all quotes
+  """
+  quotes(
+    """
+    Exclude ones with these status IDs
+    """
+    excludeStatusIds: [ID!]
+
+    """
+    Find any with a due_date after this date
+    """
+    inProductionAfter: ISO8601DateTime
+
+    """
+    Find any with a start_date before this date
+    """
+    inProductionBefore: ISO8601DateTime
+
+    """
+    Query string
+    """
+    query: String
+
+    """
+    Should the sort be descending?
+    """
+    sortDescending: Boolean
+
+    """
+    Sort on this field
+    """
+    sortOn: OrderSortField
+
+    """
+    Only include ones with these status IDs
+    """
+    statusIds: [ID!]
+
+    """
+    Find any with one of these tags. Ignored if using a query
+    """
+    tags: [String!]
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): QuoteConnection
+
+  """
+  Status
+  """
+  status(
+    """
+    The status ID
+    """
+    id: ID!
+  ): Status
+
+  """
+  List statuses
+  """
+  statuses(
+    """
+    The type of status
+    """
+    type: StatusType
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): StatusConnection!
+
+  """
+  Get a task
+  """
+  task(
+    """
+    Task ID to get
+    """
+    id: ID!
+  ): Task
+
+  """
+  Get all tasks
+  """
+  tasks(
+    """
+    Find only tasks assigned to this User
+    """
+    assigneeId: ID
+
+    """
+    Search only for completed tasks?
+    """
+    completed: Boolean
+
+    """
+    Find any tasks with a due date before this date
+    """
+    dueBefore: ISO8601DateTime
+
+    """
+    Find any tasks with a due date after this date
+    """
+    dueAfter: ISO8601DateTime
+
+    """
+    Only find tasks with associated Orders that do not have one of these statuses
+    """
+    excludedOrderStatusIds: [ID!]
+
+    """
+    Only find tasks with associated Orders that have one of these statuses
+    """
+    includedOrderStatusIds: [ID!]
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): TaskConnection!
+
+  """
+  Get all the messages in a thread
+  """
+  thread(
+    """
+    Thread ID to get messages from
+    """
+    id: ID!
+  ): Thread!
+
+  """
+  Get latest message from all threads
+  """
+  threads(
+    """
+    Only return threads that have unread messages?
+    """
+    onlyWithUnread: Boolean
+
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ThreadSummaryConnection!
+
+  """
+  Get user for the current user's session
+  """
+  user: User!
+}
+
+"""
+Quote
+"""
+type Quote implements IDed & Timestamps & VisualIDed {
+  """
+  Amount outstanding
+  """
+  amountOutstanding: Float
+
+  """
+  Amount paid
+  """
+  amountPaid: Float
+
+  """
+  Approval requests
+  """
+  approvalRequests(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ApprovalRequestConnection!
+
+  """
+  Billing address
+  """
+  billingAddress: CustomerAddress
+
+  """
+  Customer contact
+  """
+  contact: Contact!
+
+  """
+  Contractor profile
+  """
+  contractorProfile: ContractorProfile
+
+  """
+  Created date
+  """
+  createdAt: ISO8601Date!
+
+  """
+  Custom addresses
+  """
+  customAddresses(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): CustomAddressConnection
+
+  """
+  Customer due date
+  """
+  customerDueAt: ISO8601Date!
+
+  """
+  Customer note
+  """
+  customerNote: String
+
+  """
+  Delivery method
+  """
+  deliveryMethod: DeliveryMethod
+
+  """
+  Discount
+  """
+  discount: Float
+
+  """
+  Discount Amount
+  """
+  discountAmount: Float
+
+  """
+  Discount is percentage?
+  """
+  discountAsPercentage: Boolean
+
+  """
+  Production due date
+  """
+  dueAt: ISO8601DateTime
+
+  """
+  Expenses
+  """
+  expenses(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ExpenseConnection
+
+  """
+  Fees
+  """
+  fees(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): FeeConnection!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Invoice date
+  """
+  invoiceAt: ISO8601Date!
+
+  """
+  Line item groups
+  """
+  lineItemGroups(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): LineItemGroupConnection!
+
+  """
+  Is this from a merch order?
+  """
+  merch: Boolean!
+
+  """
+  Nickname
+  """
+  nickname: String
+
+  """
+  User who owns the order
+  """
+  owner: User
+
+  """
+  Packing slip url
+  """
+  packingSlipUrl: String!
+
+  """
+  Paid in full?
+  """
+  paidInFull: Boolean!
+
+  """
+  Payment due date
+  """
+  paymentDueAt: ISO8601Date!
+
+  """
+  Payment request
+  """
+  paymentRequest: PaymentRequest
+
+  """
+  Payment term
+  """
+  paymentTerm: PaymentTerm
+
+  """
+  Production files
+  """
+  productionFiles(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): ProductionFileConnection!
+
+  """
+  Production notes
+  """
+  productionNote: String
+
+  """
+  Public hash
+  """
+  publicHash: String!
+
+  """
+  Public pdf url
+  """
+  publicPdf: String!
+
+  """
+  Public url
+  """
+  publicUrl: String!
+
+  """
+  Sales tax
+  """
+  salesTax: Float
+
+  """
+  Sales Tax Amount
+  """
+  salesTaxAmount: Float
+
+  """
+  Shipping address
+  """
+  shippingAddress: CustomerAddress
+
+  """
+  Start date
+  """
+  startAt: ISO8601DateTime!
+
+  """
+  Status
+  """
+  status: Status!
+
+  """
+  Subtotal
+  """
+  subtotal: Float
+
+  """
+  Tasks
+  """
+  tags: [String!]!
+
+  """
+  Tasks
+  """
+  tasks(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): TaskConnection!
+
+  """
+  Messages
+  """
+  threadSummary: ThreadSummary
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  Total
+  """
+  total: Float
+
+  """
+  Total quantity of items
+  """
+  totalQuantity: Int
+
+  """
+  Total untaxed
+  """
+  totalUntaxed: Float
+
+  """
+  Url
+  """
+  url: String!
+
+  """
+  Quote #
+  """
+  visualId: ID
+
+  """
+  PO Number
+  """
+  visualPoNumber: String
+
+  """
+  Workorder url
+  """
+  workorderUrl: String!
+}
+
+"""
+The connection type for Quote.
+"""
+type QuoteConnection {
+  """
+  A list of edges.
+  """
+  edges: [QuoteEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Quote!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a quote
+"""
+input QuoteCreateInput {
+  """
+  Billing address
+  """
+  billingAddress: CustomerAddressInput
+
+  """
+  Customer contact
+  """
+  contact: IDInput!
+
+  """
+  Contractor profile
+  """
+  contractorProfile: IDInput
+
+  """
+  Created date
+  """
+  createdAt: ISO8601Date
+
+  """
+  Customer due date
+  """
+  customerDueAt: ISO8601Date!
+
+  """
+  Customer note
+  """
+  customerNote: String
+
+  """
+  Delivery method
+  """
+  deliveryMethod: IDInput
+
+  """
+  Discount
+  """
+  discount: Float
+
+  """
+  Discount is percentage?
+  """
+  discountAsPercentage: Boolean
+
+  """
+  Production due date
+  """
+  dueAt: ISO8601DateTime!
+
+  """
+  Invoice date
+  """
+  invoiceAt: ISO8601Date
+
+  """
+  Nickname
+  """
+  nickname: String
+
+  """
+  User who owns the order
+  """
+  owner: IDInput
+
+  """
+  Payment due date
+  """
+  paymentDueAt: ISO8601Date
+
+  """
+  Payment term
+  """
+  paymentTerm: IDInput
+
+  """
+  Production notes
+  """
+  productionNote: String
+
+  """
+  Sales tax
+  """
+  salesTax: Float
+
+  """
+  Shipping address
+  """
+  shippingAddress: CustomerAddressInput
+
+  """
+  Start date
+  """
+  startAt: ISO8601DateTime
+
+  """
+  Tasks
+  """
+  tags: [String!]
+
+  """
+  PO Number
+  """
+  visualPoNumber: String
+
+  """
+  List of fees to create
+  """
+  fees: [FeeInput!]
+
+  """
+  List of line item groups to create
+  """
+  lineItemGroups: [LineItemGroupCreateInput!]
+
+  """
+  List of custom addresses to create
+  """
+  customAddresses: [CustomAddressInput!]
+
+  """
+  List of production files to create
+  """
+  productionFiles: [ProductionFileCreateInput!]
+}
+
+"""
+An edge in a connection.
+"""
+type QuoteEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Quote!
+}
+
+"""
+Input for updating a quote
+"""
+input QuoteInput {
+  """
+  Billing address
+  """
+  billingAddress: CustomerAddressInput
+
+  """
+  Customer contact
+  """
+  contact: IDInput
+
+  """
+  Contractor profile
+  """
+  contractorProfile: IDInput
+
+  """
+  Created date
+  """
+  createdAt: ISO8601Date
+
+  """
+  Customer due date
+  """
+  customerDueAt: ISO8601Date
+
+  """
+  Customer note
+  """
+  customerNote: String
+
+  """
+  Delivery method
+  """
+  deliveryMethod: IDInput
+
+  """
+  Discount
+  """
+  discount: Float
+
+  """
+  Discount is percentage?
+  """
+  discountAsPercentage: Boolean
+
+  """
+  Production due date
+  """
+  dueAt: ISO8601DateTime
+
+  """
+  Invoice date
+  """
+  invoiceAt: ISO8601Date
+
+  """
+  Nickname
+  """
+  nickname: String
+
+  """
+  User who owns the order
+  """
+  owner: IDInput
+
+  """
+  Payment due date
+  """
+  paymentDueAt: ISO8601Date
+
+  """
+  Payment term
+  """
+  paymentTerm: IDInput
+
+  """
+  Production notes
+  """
+  productionNote: String
+
+  """
+  Sales tax
+  """
+  salesTax: Float
+
+  """
+  Shipping address
+  """
+  shippingAddress: CustomerAddressInput
+
+  """
+  Start date
+  """
+  startAt: ISO8601DateTime
+
+  """
+  Tasks
+  """
+  tags: [String!]
+
+  """
+  PO Number
+  """
+  visualPoNumber: String
+
+  """
+  Quote #
+  """
+  visualId: ID
+}
+
+"""
+Social Links
+"""
+type Social {
+  """
+  Facebook link
+  """
+  facebookLink: String
+
+  """
+  Instagram link
+  """
+  instagramLink: String
+
+  """
+  Twitter link
+  """
+  twitterLink: String
+}
+
+"""
+Order status
+"""
+type Status implements IDed & Timestamps {
+  """
+  Color
+  """
+  color: String!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String!
+
+  """
+  Position
+  """
+  position: Int!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  The type of status
+  """
+  type: StatusType!
+}
+
+"""
+The connection type for Status.
+"""
+type StatusConnection {
+  """
+  A list of edges.
+  """
+  edges: [StatusEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Status!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type StatusEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Status!
+}
+
+"""
+The status type
+"""
+enum StatusType {
+  """
+  Quote
+  """
+  QUOTE
+
+  """
+  Invoice
+  """
+  INVOICE
+}
+
+"""
+Task
+"""
+type Task implements IDed & Timestamps {
+  """
+  Who the task is assigned to
+  """
+  assignedTo: User
+
+  """
+  Is the task complete?
+  """
+  completed: Boolean!
+
+  """
+  When was it last completed
+  """
+  completedAt: ISO8601DateTime
+
+  """
+  Who completed the task
+  """
+  completedBy: User
+
+  """
+  When is the task due
+  """
+  dueAt: ISO8601DateTime!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  The task name
+  """
+  name: String!
+
+  """
+  The title of the task group this was created from
+  """
+  sourcePresetTaskGroupTitle: String
+
+  """
+  Object this is attached to, if any
+  """
+  taskable: TaskableUnion
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for Task.
+"""
+type TaskConnection {
+  """
+  A list of edges.
+  """
+  edges: [TaskEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [Task!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+Input for creating a task
+"""
+input TaskCreateInput {
+  """
+  Who the task is assigned to
+  """
+  assignedTo: IDInput
+
+  """
+  Is the task complete?
+  """
+  completed: Boolean
+
+  """
+  When is the task due
+  """
+  dueAt: ISO8601DateTime!
+
+  """
+  The task name
+  """
+  name: String!
+
+  """
+  Object this is attached to, if any
+  """
+  taskable: TaskableInput
+}
+
+"""
+An edge in a connection.
+"""
+type TaskEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: Task!
+}
+
+"""
+Input for a task
+"""
+input TaskInput {
+  """
+  Who the task is assigned to
+  """
+  assignedTo: IDInput
+
+  """
+  Is the task complete?
+  """
+  completed: Boolean
+
+  """
+  When is the task due
+  """
+  dueAt: ISO8601DateTime
+
+  """
+  The task name
+  """
+  name: String
+
+  """
+  Object this is attached to, if any
+  """
+  taskable: TaskableInput
+}
+
+"""
+Input for a taskable (Quote, Invoice, or Customer)
+"""
+input TaskableInput {
+  """
+  The ID of the Quote, Invoice, or Customer to attach this task to
+  """
+  id: ID!
+
+  """
+  The type of taskable to attach this task to. Either Quote, Invoice, or Customer
+  """
+  type: TaskableType!
+}
+
+"""
+The taskable type
+"""
+enum TaskableType {
+  """
+  Quote
+  """
+  QUOTE
+
+  """
+  Invoice
+  """
+  INVOICE
+
+  """
+  Customer
+  """
+  CUSTOMER
+}
+
+"""
+Taskable objects
+"""
+union TaskableUnion = Customer | Invoice | Quote
+
+"""
+Text Message
+"""
+type TextMessage implements IDed & Message & Timestamps {
+  """
+  Attached files
+  """
+  attachments(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): MessageAttachmentConnection!
+
+  """
+  From
+  """
+  from: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Incoming message?
+  """
+  incoming: Boolean!
+
+  """
+  Who was the recipient?
+  """
+  recipient: MessageParticipantUnion
+
+  """
+  Who was the sender?
+  """
+  sender: MessageParticipantUnion
+
+  """
+  Delivery status
+  """
+  status: MessageDeliveryStatus!
+
+  """
+  Text
+  """
+  text: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+
+  """
+  To
+  """
+  to: String!
+}
+
+"""
+A thread
+"""
+type Thread {
+  """
+  Thread ID
+  """
+  id: ID!
+
+  """
+  Messages
+  """
+  messages(
+    """
+    Returns the elements in the list that come after the specified cursor.
+    """
+    after: String
+
+    """
+    Returns the elements in the list that come before the specified cursor.
+    """
+    before: String
+
+    """
+    Returns the first _n_ elements from the list.
+    """
+    first: Int
+
+    """
+    Returns the last _n_ elements from the list.
+    """
+    last: Int
+  ): MessageUnionConnection!
+
+  """
+  Quote or Invoice the message is regarding
+  """
+  regarding: OrderUnion
+
+  """
+  Is the thread unread?
+  """
+  unread: Boolean!
+}
+
+"""
+A thread summary
+"""
+type ThreadSummary {
+  """
+  Thread ID
+  """
+  id: ID!
+
+  """
+  Latest received message
+  """
+  lastReceivedMessage: MessageUnion
+
+  """
+  Quote or Invoice the message is regarding
+  """
+  regarding: OrderUnion
+
+  """
+  Is the thread unread?
+  """
+  unread: Boolean!
+}
+
+"""
+The connection type for ThreadSummary.
+"""
+type ThreadSummaryConnection {
+  """
+  A list of edges.
+  """
+  edges: [ThreadSummaryEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [ThreadSummary!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type ThreadSummaryEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: ThreadSummary!
+}
+
+"""
+Object created and updated dates
+"""
+interface Timestamps {
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+Type of Work
+"""
+type TypeOfWork implements IDed & Timestamps {
+  """
+  Archived?
+  """
+  archived: Boolean!
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+The connection type for TypeOfWork.
+"""
+type TypeOfWorkConnection {
+  """
+  A list of edges.
+  """
+  edges: [TypeOfWorkEdge!]!
+
+  """
+  A list of nodes.
+  """
+  nodes: [TypeOfWork!]!
+
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: PageInfo!
+}
+
+"""
+An edge in a connection.
+"""
+type TypeOfWorkEdge {
+  """
+  A cursor for use in pagination.
+  """
+  cursor: String!
+
+  """
+  The item at the end of the edge.
+  """
+  node: TypeOfWork!
+}
+
+"""
+User
+"""
+type User implements IDed & Timestamps {
+  """
+  User's account
+  """
+  account: Account!
+
+  """
+  User's Avatar
+  """
+  avatar: Avatar!
+
+  """
+  User email
+  """
+  email: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  User name
+  """
+  name: String!
+
+  """
+  User Permissions
+  """
+  permissions: [Permission!]
+
+  """
+  User phone
+  """
+  phone: String
+
+  """
+  User Timezone
+  """
+  timeZone: String!
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+Vendor
+"""
+type Vendor implements IDed & Timestamps {
+  """
+  Account number
+  """
+  accountNumber: String
+
+  """
+  Address
+  """
+  address: Address!
+
+  """
+  Company name
+  """
+  company: String!
+
+  """
+  Email
+  """
+  email: String
+
+  """
+  Fax
+  """
+  fax: String
+
+  """
+  The ID
+  """
+  id: ID!
+
+  """
+  Name
+  """
+  name: String
+
+  """
+  Phone
+  """
+  phone: String
+
+  """
+  Object timestamps
+  """
+  timestamps: ObjectTimestamps!
+}
+
+"""
+Visual ID Number
+"""
+interface VisualIDed {
+  """
+  Visual ID Number
+  """
+  visualId: ID
+}
