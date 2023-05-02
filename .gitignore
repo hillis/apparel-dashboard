@@ -30,6 +30,7 @@ yarn-error.log
 
 # local env files
 .env*.local
+.env
 
 /src/environments/environment.ts
 /src/environments/environment.prod.ts
